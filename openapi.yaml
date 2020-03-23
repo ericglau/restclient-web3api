@@ -1,0 +1,90 @@
+openapi: 3.0.0
+info:
+  title: Amberdata Web3API for Gas Predictions
+  description: This is an OpenAPI document for Amberdata Gas Predictions https://docs.amberdata.io/reference#get-gas-predictions
+  contact:
+    email: ericglau@outlook.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+- url: https://web3api.io
+  description: Amberdata Web3API
+tags:
+- name: web3
+  description: Operations available to web3 application developers
+paths:
+  /api/v2/transactions/gas/predictions:
+    get:
+      tags:
+      - web3
+      summary: gas predictions
+      description: |
+        Retrieves the latest gas predictions for the transactions.
+      operationId: gasPredictions
+      parameters:
+      - name: x-api-key
+        in: header
+        description: API key
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: x-amberdata-blockchain-id
+        in: header
+        description: The id of the blockchain
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: gas price predictions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payload'
+components:
+  schemas:
+    Payload:
+      required:
+      - payload
+      type: object
+      properties:
+        payload:
+          $ref: '#/components/schemas/GasPredictions'
+    GasPredictions:
+      required:
+      - average
+      - fast
+      - fastest
+      - safeLow
+      type: object
+      properties:
+        average:
+          $ref: '#/components/schemas/GasPrediction'
+        fast:
+          $ref: '#/components/schemas/GasPrediction'
+        fastest:
+          $ref: '#/components/schemas/GasPrediction'
+        safeLow:
+          $ref: '#/components/schemas/GasPrediction'
+    GasPrediction:
+      required:
+      - gasPrice
+      - numBlocks
+      - wait
+      type: object
+      properties:
+        gasPrice:
+          type: number
+          example: 2800000000
+        numBlocks:
+          type: number
+          example: 17
+        wait:
+          type: number
+          example: 3.4
