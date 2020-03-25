@@ -2,13 +2,13 @@
 
 ## Introduction
 
-This project provides an example of how a Java microservice can easily call a REST API through generated Java interfaces.  
+This project provides an example of how a cloud-native Java application can easily call a REST API through generated Java interfaces.  
 
 The scenario demonstrates using [Amberdata's Web3api](https://docs.amberdata.io/reference#reference-getting-started) to interact with the Ethereum public blockchain to predict gas prices for transactions.
 
 ### Running the project
 
-Run the project with the following command.  This runs the microservice in development mode allowing you to access it through the Open Liberty server, while any further changes that you make to the source code will be reflected automatically.
+Run the project with the following command.  This runs the application in development mode allowing you to access it through the Open Liberty server, while any further changes that you make to the source code will be reflected automatically.
 
 ```
 mvn liberty:dev
