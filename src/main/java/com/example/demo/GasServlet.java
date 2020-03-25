@@ -30,9 +30,10 @@ public class GasServlet extends HttpServlet {
         throws ServletException, IOException {
         GasPredictions gasPredictions;
         try {
-            gasPredictions = api.gasPredictions("UAK000000000000000000000000demo0001", "ethereum-mainnet").getPayload();
+            // Update your API key in the line below
+            gasPredictions = api.gasPredictions(/* API key */ "UAK000000000000000000000000demo0001", /* Blockchain network */ "ethereum-mainnet").getPayload();
         } catch (ApiException e) {
-            response.getWriter().append("Web3API returned with exception: " + e.getMessage());
+            response.getWriter().append("Web3api returned with exception: " + e.getMessage());
             return;
         }
         GasPrediction fast = gasPredictions.getFast();
